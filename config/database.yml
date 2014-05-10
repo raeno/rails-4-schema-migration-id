@@ -1,0 +1,9 @@
+
+development:
+  adapter: postgresql
+  username: <user>
+  password: <password>
+  database: rails_migration_bug
+  pool: 5
+  timeout: 5000
+
