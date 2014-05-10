@@ -1,28 +1,12 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Scaffold Rails app that illustrates bug with primary_key_prefix_type = :table_name_with_underscore
 
-Things you may want to cover:
+The problem is that Rails returns 'primary_key' value for tables without it when primary_key_prefix_type = :table_name_with_underscore parameter is set. 
 
-* Ruby version
+It leads to problems with tables without primary keys and, most important, to inability to do any migrations when used with 'postgres' adapter.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To reproduce:
+1. Clone & bundle install
+2. Create postgres db and set valid credentials in database.yml
+3. Run rake db:migrate
